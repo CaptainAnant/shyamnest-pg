@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shyam Nest | Premium Student Living</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-left">
+            <button id="sidebar-toggle" class="menu-btn">
+                <i class="fas fa-stream"></i>
+            </button>
+            <h1 class="brand-name">SHYAM NEST</h1>
+        </div>
+        <div class="nav-center">
+            <span id="page-title" class="animate-text">HOME</span>
+        </div>
+        <div class="nav-right">
+            <a href="#" onclick="navigate('home')">Home</a>
+            <a href="#" onclick="navigate('all-rooms')">Rooms</a> 
+            <a href="#" onclick="navigate('about')">About Us</a>
+            <a href="#" onclick="openGeneralContact()" class="nav-cta">Contact</a>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-links">
+                <a href="#" onclick="navigate('home')" class="active-link" id="link-home">
+                    <div class="icon-box"><i class="fas fa-th-large"></i></div>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" onclick="navigate('locations')" id="link-locations">
+                    <div class="icon-box"><i class="fas fa-map-marked-alt"></i></div>
+                    <span>Locations</span>
+                </a>
+                <a href="#" onclick="navigate('services')" id="link-services">
+                    <div class="icon-box"><i class="fas fa-concierge-bell"></i></div>
+                    <span>Services</span>
+                </a>
+            </div>
+        </aside>
+
+        <main id="app-content" class="content-area">
+            </main>
+
+        <aside class="ad-section">
+            <div class="ad-card sticky-ad">
+                <div class="ad-badge">Limited Time</div>
+                <h3>🎓 Early Bird Season</h3>
+                <p>Secure your spot at Shyam Nest before the college rush begins!</p>
+                <div class="ad-visual">
+                    <i class="fas fa-tag"></i>
+                </div>
+                <button class="btn-white-outline">Check Discounts</button>
+            </div>
+        </aside>
+    </div>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4>Shyam Nest</h4>
+                <p>Redefining student accommodation with luxury, safety, and community.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Explore</h4>
+                <a href="#" onclick="navigate('locations')">Our Branches</a>
+                <a href="#" onclick="navigate('services')">Amenities</a>
+                <a href="#" onclick="navigate('about')">Student Reviews</a>
+            </div>
+            <div class="footer-col">
+                <h4>Connect</h4>
+                <p>+91 99455 84185</p>
+                <p>info@shyamnest.com</p>
+                <a href="#" onclick="navigate('admin')" class="admin-link"><i class="fas fa-lock"></i> Admin Login</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Shyam Nest. All rights reserved.</p>
+            <div class="dev-credits">
+                <p>Designed & developed with &hearts; by <a href="https://www.linkedin.com/in/anant2005/" target="_blank" id="dev-contact">Anant</a></p>
+                <div class="dev-icons">
+                    <a href="https://www.linkedin.com/in/anant2005/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="mailto:anant.tjit@gmail.com"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div id="booking-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">×</span>
+            <h2 id="modal-title">Book Your Nest</h2>
+            <p>We'll connect you directly with the owner to finalize.</p>
+            <form id="booking-form">
+                <input type="text" id="user-name" placeholder="Your Full Name" required>
+                <input type="tel" id="user-phone" placeholder="Phone Number" required>
+                <input type="email" id="user-email" placeholder="Email Address" required>
+                <button type="submit" class="btn-primary full-width">Proceed to WhatsApp <i class="fab fa-whatsapp"></i></button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
