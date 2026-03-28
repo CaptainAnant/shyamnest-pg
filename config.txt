@@ -1,0 +1,9 @@
+// Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyAEbkEndPgc_cdcx7pQDxuUlJNHJifNpfs",
+            authDomain: "shyam-nest-pg.firebaseapp.com",
+            projectId: "shyam-nest-pg",
+            storageBucket: "shyam-nest-pg.firebasestorage.app",
+            messagingSenderId: "649313234024",
+            appId: "1:649313234024:web:af02e3e1d13cb6f4c45fdd"
+};

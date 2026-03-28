@@ -1,66 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shyam Nest | Premium Student Living</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <nav class="navbar">
         <div class="nav-left">
-            <button id="sidebar-toggle" class="menu-btn">
-                <i class="fas fa-stream"></i>
-            </button>
+            <button id="sidebar-toggle" class="menu-btn" title="Toggle Menu"><i class="fas fa-stream"></i></button>
             <h1 class="brand-name">SHYAM NEST</h1>
         </div>
         <div class="nav-center">
             <span id="page-title" class="animate-text">HOME</span>
         </div>
-        <div class="nav-right">
+        <div class="nav-right" id="nav-right-container">
+            <button id="theme-toggle" class="icon-btn" title="Toggle Dark Mode"><i class="fas fa-moon"></i></button>
             <a href="#" onclick="navigate('home')">Home</a>
-            <a href="#" onclick="navigate('all-rooms')">Rooms</a> 
+            <a href="#" onclick="navigate('all-rooms')">Rooms</a>
             <a href="#" onclick="navigate('about')">About Us</a>
-            <a href="#" onclick="openGeneralContact()" class="nav-cta">Contact</a>
+            <a href="#" onclick="openGeneralContact()" class="nav-cta" style="margin-left:15px;">Contact</a>
         </div>
     </nav>
 
     <div class="main-container">
-        
         <aside class="sidebar" id="sidebar">
             <div class="sidebar-links">
                 <a href="#" onclick="navigate('home')" class="active-link" id="link-home">
-                    <div class="icon-box"><i class="fas fa-th-large"></i></div>
-                    <span>Dashboard</span>
+                    <div class="icon-box"><i class="fas fa-th-large"></i></div><span>Dashboard</span>
                 </a>
                 <a href="#" onclick="navigate('locations')" id="link-locations">
-                    <div class="icon-box"><i class="fas fa-map-marked-alt"></i></div>
-                    <span>Locations</span>
+                    <div class="icon-box"><i class="fas fa-map-marked-alt"></i></div><span>Locations</span>
                 </a>
                 <a href="#" onclick="navigate('services')" id="link-services">
-                    <div class="icon-box"><i class="fas fa-concierge-bell"></i></div>
-                    <span>Services</span>
+                    <div class="icon-box"><i class="fas fa-concierge-bell"></i></div><span>Services</span>
                 </a>
             </div>
         </aside>
 
         <main id="app-content" class="content-area">
-            </main>
-
-        <aside class="ad-section">
-            <div class="ad-card sticky-ad">
-                <div class="ad-badge">Limited Time</div>
-                <h3>🎓 Early Bird Season</h3>
-                <p>Secure your spot at Shyam Nest before the college rush begins!</p>
-                <div class="ad-visual">
-                    <i class="fas fa-tag"></i>
-                </div>
-                <button class="btn-white-outline">Check Discounts</button>
-            </div>
-        </aside>
+        </main>
     </div>
 
     <footer class="main-footer">
@@ -77,37 +64,179 @@
             </div>
             <div class="footer-col">
                 <h4>Connect</h4>
-                <p>+91 99455 84185</p>
-                <p>info@shyamnest.com</p>
-                <a href="#" onclick="navigate('admin')" class="admin-link"><i class="fas fa-lock"></i> Admin Login</a>
+                <p><i class="fas fa-phone"></i> +91 99455 84185</p>
+                <p><i class="fas fa-envelope"></i> info@shyamnest.com</p>
             </div>
         </div>
         <div class="footer-bottom">
             <p>© 2026 Shyam Nest. All rights reserved.</p>
             <div class="dev-credits">
-                <p>Designed & developed with &hearts; by <a href="https://www.linkedin.com/in/anant2005/" target="_blank" id="dev-contact">Anant</a></p>
-                <div class="dev-icons">
-                    <a href="https://www.linkedin.com/in/anant2005/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    <a href="mailto:anant.tjit@gmail.com"><i class="fas fa-envelope"></i></a>
-                </div>
+                <p>Designed & developed with love by <a href="https://www.linkedin.com/in/anant2005/" target="_blank"
+                        id="dev-contact">Anant</a></p>
             </div>
         </div>
     </footer>
 
-    <div id="booking-modal" class="modal">
+    <div id="toast-container"></div>
+
+    <div id="auth-modal" class="modal">
+        <div class="modal-content auth-modal-content">
+            <span class="close-modal" onclick="document.getElementById('auth-modal').style.display='none'">×</span>
+            <div class="auth-left">
+                <h2 id="auth-left-title">Welcome Back</h2>
+                <p>Log in to access your dashboard and manage your stay.</p>
+            </div>
+            <div class="auth-right">
+                <h2 id="auth-title" style="margin-bottom: 5px;">Secure Login</h2>
+                <p id="auth-subtitle" style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">Access
+                    your account.</p>
+                <form id="auth-form" class="modern-form">
+                    <div class="input-group" id="name-group" style="display:none;">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="auth-name" placeholder="Full Name">
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="auth-email" placeholder="Email Address" required>
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="auth-password" placeholder="Password" required>
+                    </div>
+                    <button type="submit" id="auth-submit-btn" class="btn-primary full-width"
+                        style="margin-top:10px;">Login</button>
+                    <p id="auth-error"
+                        style="color: #e74c3c; font-size: 0.85rem; margin-top: 10px; display: none; text-align:center;">
+                    </p>
+                    <div style="text-align:center; margin-top:20px; font-size:0.9rem;">
+                        <a href="#" id="auth-toggle-link" style="color:var(--primary); font-weight:600;">Need an
+                            account? Sign Up</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="pay-modal" class="modal">
         <div class="modal-content">
-            <span class="close-modal">×</span>
-            <h2 id="modal-title">Book Your Nest</h2>
-            <p>We'll connect you directly with the owner to finalize.</p>
-            <form id="booking-form">
-                <input type="text" id="user-name" placeholder="Your Full Name" required>
-                <input type="tel" id="user-phone" placeholder="Phone Number" required>
-                <input type="email" id="user-email" placeholder="Email Address" required>
-                <button type="submit" class="btn-primary full-width">Proceed to WhatsApp <i class="fab fa-whatsapp"></i></button>
+            <span class="close-modal" onclick="document.getElementById('pay-modal').style.display='none'">×</span>
+            <h2>Submit Rent Payment</h2>
+            <p style="color:var(--text-muted); margin-bottom: 1.5rem; font-size:0.9rem;">Please scan the Owner's UPI QR
+                code and enter the UTR/Reference Number below to submit your payment for verification.</p>
+            <input type="text" id="upi-utr-input" class="form-input" placeholder="e.g., 301234567890"
+                style="margin-bottom:1rem;">
+            <button class="btn-primary full-width" onclick="submitUPIPayment()">Submit for Verification</button>
+        </div>
+    </div>
+
+    <div id="approve-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="document.getElementById('approve-modal').style.display='none'">×</span>
+            <h2>Assign Room to Tenant</h2>
+            <p style="color:var(--text-muted); margin-bottom: 1.5rem; font-size:0.9rem;">Review the application and
+                assign a room.</p>
+            <div style="margin-bottom: 1rem;">
+                <label>Room ID</label>
+                <input type="text" id="assign-room-id" class="form-input" placeholder="e.g., r101">
+            </div>
+            <div style="margin-bottom: 1rem;">
+                <label>Monthly Rent (Rs.)</label>
+                <input type="number" id="assign-rent-amt" class="form-input" placeholder="e.g., 15000">
+            </div>
+            <input type="hidden" id="approve-tenant-id">
+            <button class="btn-primary full-width" style="margin-top:10px;" onclick="submitTenantApproval()">Approve &
+                Assign Room</button>
+        </div>
+    </div>
+
+    <div id="add-room-modal" class="modal">
+        <div class="modal-content" style="width: 500px;">
+            <span class="close-modal" onclick="document.getElementById('add-room-modal').style.display='none'">×</span>
+            <h2>Add New Room</h2>
+            <form id="add-room-form" style="margin-top: 1rem;">
+                <div style="display:flex; gap:10px; margin-bottom:10px;">
+                    <div style="flex:1;"><label>Room ID</label><input type="text" id="new-room-id" class="form-input"
+                            placeholder="e.g., r401" required></div>
+                    <div style="flex:1;"><label>Branch</label><select id="new-room-branch" class="form-select"
+                            required></select></div>
+                </div>
+                <div style="margin-bottom:10px;">
+                    <label>Room Name / Type</label>
+                    <input type="text" id="new-room-name" class="form-input" placeholder="Premium Single Suite"
+                        required>
+                </div>
+                <div style="display:flex; gap:10px; margin-bottom:10px;">
+                    <div style="flex:1;"><label>Sharing Capacity</label><select id="new-room-share" class="form-select">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select></div>
+                    <div style="flex:1;"><label>Price (Rs.)</label><input type="number" id="new-room-price"
+                            class="form-input" required></div>
+                </div>
+                <div style="margin-bottom:10px;">
+                    <label>Image URL</label>
+                    <input type="text" id="new-room-img" class="form-input" placeholder="https://..." required>
+                </div>
+                <button type="submit" class="btn-primary full-width" style="margin-top:15px;">Save Room to
+                    Database</button>
             </form>
         </div>
     </div>
 
+    <div id="booking-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="document.getElementById('booking-modal').style.display='none'">×</span>
+            <h2 id="modal-title">Book Your Nest</h2>
+            <p style="color:var(--text-muted); margin-bottom: 1.5rem; font-size:0.9rem;">Provide your details and we'll
+                format a WhatsApp message for the owner.</p>
+            <form id="booking-form">
+                <input type="text" id="user-name" class="form-input" placeholder="Your Full Name" required
+                    style="margin-bottom:10px;">
+                <input type="tel" id="user-phone" class="form-input" placeholder="Phone Number" required
+                    style="margin-bottom:10px;">
+                <input type="email" id="user-email" class="form-input" placeholder="Email Address" required
+                    style="margin-bottom:15px;">
+                <button type="submit" class="btn-primary full-width">Proceed to WhatsApp <i
+                        class="fab fa-whatsapp"></i></button>
+            </form>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+        import { getFirestore, doc, getDoc, setDoc, updateDoc, collection, getDocs, deleteDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyAEbkEndPgc_cdcx7pQDxuUlJNHJifNpfs",
+            authDomain: "shyam-nest-pg.firebaseapp.com",
+            projectId: "shyam-nest-pg",
+            storageBucket: "shyam-nest-pg.firebasestorage.app",
+            messagingSenderId: "649313234024",
+            appId: "1:649313234024:web:af02e3e1d13cb6f4c45fdd"
+        };
+
+        const app = initializeApp(firebaseConfig);
+
+        // Export to Global Window for script.js
+        window.fbAuth = getAuth(app);
+        window.fbDb = getFirestore(app);
+        window.signIn = signInWithEmailAndPassword;
+        window.signUp = createUserWithEmailAndPassword;
+        window.onAuthStateChanged = onAuthStateChanged;
+        window.signOut = signOut;
+        window.fbDoc = doc;
+        window.fbGetDoc = getDoc;
+        window.fbSetDoc = setDoc;
+        window.fbUpdateDoc = updateDoc;
+        window.fbDeleteDoc = deleteDoc;
+        window.fbCollection = collection;
+        window.fbGetDocs = getDocs;
+    </script>
+
     <script src="script.js"></script>
 </body>
+
 </html>
